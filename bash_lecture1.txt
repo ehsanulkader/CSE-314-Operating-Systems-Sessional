@@ -1,0 +1,64 @@
+date
+which date
+echo $PATH
+pwd
+ls
+ls -l
+ls -1
+ls -a1
+cd ~
+cd -
+cd ..
+ls -1 test.sh
+
+chmod a+x test.sh  //gives permission to execute test.sh
+chmod a-x test.sh  //removes permission to execute test.sh
+//a for any, g for group, o for owner.
+
+
+echo $(ls -l $filename)	//prints details with permission of the filename file
+
+touch dummy.txt
+touch .hid.txt // doesn't show in ls, have to add a after ls
+ls -a1hl
+cat a.cpp b.cpp
+head -n3 a.cpp
+tail -n2 a.cpp
+
+
+man ls
+
+mkdir directoryname //creates directory 
+
+cp dummy.txt anotherdirectory //copies a.txt to anotherdirectory
+cp testdir/b.cpp .	//copies b.cpp from testdir to current directory indicated by dot
+
+rm a.txt	//deletes fike
+rm -r directoryname //deletes directory
+rm -ri dir3 //delete but interactive mode
+
+mv a.cpp anotherdirectory //moves a.cpp to anotherdirectory
+mv a.cpp b.cpp //renames a.cpp to b.cpp
+
+./a.exe < input.txt 	// ./a.out in unix
+./a.exe < input.txt > out.txt
+
+wc a.cpp
+wc -l a.cpp
+
+ls -1 | wc -l	// | means pipe. it gives output of 1st command as input of 2nd command
+cat twinkle.txt | head -n3 | tail -n1 //outputs 3rd line of twinkle.txt
+head -n3 twinkle.txt | tail -n1 //does the same thing as previous line
+
+grep How twinkle.txt //find lines with How in it
+grep -i how twinkle.txt //ignore case
+
+x=10
+echo $x //prints 10
+echo "hello $x" //prints hello 10
+echo 'hello $x' //prints hello $x
+
+x=1
+((x=x+1))
+echo $x //prints 2
+

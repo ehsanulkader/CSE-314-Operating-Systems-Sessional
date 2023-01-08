@@ -1,0 +1,112 @@
+# is used for comment
+#! defines what will be used to run the sh file
+echo $?  //prints exit status of last command
+echo > out.txt	//overwrite
+echo >> out.txt //append
+ps
+tree
+
+echo "enter a value"
+read val
+echo $val		//consumes space. "$val" prints as it s
+
+expr 1 + 1 //prints 2 but expr 1 +1 gives error, so problematic
+
+((1+1))
+
+echo $((1+1))
+
+
+expected="xyz"
+if [ $val = $expected ]; then
+    echo "equal"
+fi
+
+
+expected=012
+if [ $val -eq $expected ]; then
+    echo "equal"
+fi
+
+
+//find which one is file in this directory
+// and which one is not
+for file in *; do
+	echo -n "$file is: "
+	if [[ -f $file ]]; then
+		echo "file"
+	else
+		echo "not file"
+	fi
+done
+
+
+x=`ls` and x=$(ls) does the same thing
+
+
+//$# gives number of arguments, $1,$3 is used to access 
+//1st and 3rd command line argument
+//$* has the list of all arguments
+echo "arg num $#"
+echo "$1 $3"
+for arg in "$*"; do
+	echo "$arg"
+done
+
+
+if [ "$1" -lt 10 ]; then 
+	echo "small"
+fi
+
+
+myfn() {
+	echo "inside func $1 $2"
+}
+x = $(myfn 10 20)
+echo "outside $1 $2"
+echo "$x"
+
+
+true && echo "true and test"
+false && echo "false and test"
+true || echo "true or test"
+false || echo "false or test"
+
+
+//read line by line and find a pattern in each line
+[[ $# -ne 1 ]] && exit 1
+pat=$1
+#while read line; do
+while IFS= read -r line; do
+	if echo "$line" | grep -q "$1"; then
+		echo "$line"
+ 	fi
+	#if grep -q "cin" <(echo "$line"); then
+ 	#	echo "$line"
+ 	#fi
+done
+
+//recursive function example - factorial
+fact() {
+	if [[ $1 -eq 0 ]]; then
+		echo 1
+		return
+	fi
+	last=$(fact $(( $1 - 1)))
+	echo $(( $1 * last ))
+}
+fact $1
+
+//array example
+myArray=("cat" "dog" "mouse" "frog")
+myArray[10]="far"
+#iterate over values
+for str in ${myArray[@]}; do
+	echo $str
+done
+#accessing using indices
+for i in ${!myArray[@]}; do
+	echo "element $i is ${myArray[$i]}"
+done
+
+
